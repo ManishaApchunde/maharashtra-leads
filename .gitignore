@@ -1,0 +1,34 @@
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+**/venv/
+**/.venv/
+
+# Node.js
+node_modules/
+frontend/dist/
+
+# Local databases and backups
+*.sql
+*.sql.gz
+*.dump
+*.bak
+
+# Logs
+*.log
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/

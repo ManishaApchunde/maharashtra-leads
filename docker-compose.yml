@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: maharashtra_leads_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_USER: leads
+      MYSQL_PASSWORD: leads
+      MYSQL_DATABASE: maharashtra_leads
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uleads -pleads --silent"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  mysqldata:

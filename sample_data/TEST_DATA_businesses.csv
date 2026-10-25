@@ -1,0 +1,11 @@
+shop_name,contact_name,phone,alternate_phone,whatsapp_number,email,address,area,village,city,taluka,district,pincode,latitude,longitude,google_maps_url,category,source,source_url
+TEST_DATA Om Xerox Center,,+91 90000 00001,,9000000001,,"Shop 4, TEST Road, Hadapsar, Pune 411028",Hadapsar,,Pune,Haveli,Pune,411028,18.5091,73.9262,,Xerox,TEST_DATA,
+TEST_DATA Om Xerox Centre,,09000000001,,,,"Shop no 4 TEST Rd Hadapsar Pune",Hadapsar,,pune,Haveli Taluka,Poona,411028,18.5092,73.9263,,xerox centre,TEST_DATA,
+TEST_DATA OM XEROX,,,,,,"TEST Road, Hadapsar",Hadapsar,,Pune,Haveli,Pune,411028,18.5093,73.9261,,,TEST_DATA,
+TEST_DATA Shree Ganesh Xerox & Printing,,90000 00002 / 90000 00003,,,test@example.com,"TEST Lane, Near Tehsil Office, Sinnar",,,Sinnar,Sinnar,Nashik,422103,19.8450,73.9980,,"Xerox, Printing",TEST_DATA,
+TEST_DATA Sai CSC Aaple Sarkar Seva Kendra,,9000000004,,9000000004,,"TEST Chowk, Hingna Road",,,Nagpur,Nagpur Urban,Nagpur,440016,,,,CSC,TEST_DATA,
+TEST_DATA Digital Online Form Center,,020-24450000,,,,"TEST Peth, Ahmednagar",,,Ahmednagar,Ahmednagar,Ahmednagar,414001,,,,Online Services,TEST_DATA,
+TEST_DATA Cyber Point,,12345,,,,,,,,,,,,,,Cyber Cafe,TEST_DATA,
+,,9000000005,,,,"No name row",,,Pune,Haveli,Pune,411001,,,,,TEST_DATA,
+TEST_DATA Bad Pin Stationery,,9000000006,,,,"TEST Market, Wardha",,,Wardha,Wardha,Wardha,560001,,,,stationary,TEST_DATA,
+TEST_DATA Mumbai Copy Centre,,+91-90000-00007,,,,"TEST Street, Dadar",Dadar,,Mumbai,,Mumbai,400014,,,,photocopy,TEST_DATA,

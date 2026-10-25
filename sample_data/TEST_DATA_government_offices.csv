@@ -1,0 +1,3 @@
+name,office_type,address,village,taluka,district,latitude,longitude,phone,source
+TEST_DATA Talathi Office Hadapsar,Talathi Office,TEST address,Hadapsar,Haveli,Pune,18.5089,73.9260,,TEST_DATA
+TEST_DATA Tehsil Office Sinnar,Tehsil Office,TEST address,Sinnar,Sinnar,Nashik,19.8460,74.0000,,TEST_DATA
