@@ -13,7 +13,7 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
     volumes:
-      - mysqldata:/var/lib/mysql
+      - mysqldata_v2:/var/lib/mysql
     healthcheck:
       test:
         - CMD-SHELL
@@ -57,4 +57,4 @@ services:
       - "80"
 
 volumes:
-  mysqldata:
+  mysqldata_v2:
