@@ -1,25 +1,60 @@
+version: '3.8'
+
 services:
   db:
     image: mysql:8.4
-    container_name: maharashtra_leads_db
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in Coolify}
       MYSQL_USER: leads
-      MYSQL_PASSWORD: leads
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in Coolify}
       MYSQL_DATABASE: maharashtra_leads
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
-    ports:
-      - "3306:3306"
     volumes:
       - mysqldata:/var/lib/mysql
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uleads -pleads --silent"]
+      test:
+        - CMD-SHELL
+        - 'mysqladmin ping -h 127.0.0.1 -u root -p"$${MYSQL_ROOT_PASSWORD}" --silent'
       interval: 5s
       timeout: 3s
       retries: 20
+      start_period: 30s
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: mysql+pymysql://leads:${MYSQL_PASSWORD}@db:3306/maharashtra_leads?charset=utf8mb4
+      API_KEY: ${API_KEY:-}
+      GOOGLE_PLACES_API_KEYS: ${GOOGLE_PLACES_API_KEYS:-}
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://localhost:5173}
+      OLD_RECORD_DAYS: ${OLD_RECORD_DAYS:-180}
+    depends_on:
+      db:
+        condition: service_healthy
+    command:
+      - sh
+      - -c
+      - alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000
+    expose:
+      - "8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api
+    restart: unless-stopped
+    depends_on:
+      - backend
+    expose:
+      - "80"
 
 volumes:
   mysqldata:
